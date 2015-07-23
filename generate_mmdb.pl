@@ -41,8 +41,11 @@ if ($db_type eq "tor") {
 }
 
 my %types = (
-    proxy_type => 'utf8_string',
-    proxy_level => 'utf8_string',
+    country_code => 'utf8_string',
+    state_province_code => 'utf8_string',
+    city_id => 'utf8_string',
+    postal_code => 'utf8_string',
+    dma_code => 'utf8_string'
 );
 
 # record_size: there's no actual documentation as to how
