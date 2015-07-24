@@ -48,15 +48,13 @@ my %types = (
     dma_code => 'utf8_string'
 );
 
-# record_size: there's no actual documentation as to how
-# to choose a value in any of the documentation online.
-# If I understand it correctly (I probably don't), it's
-# the arity of each node. I chose 24 because the example
-# in the docs used it, and I can't justify changing it.
-# In retrospect, "chose" is a bit strong. -klady
+# record_size: The number of bits used to address entries in the DB.  Needs 
+# to be large enough to address all items being added to the DB.
+# Note, using record_size=28 can address up to 268M entries.
+# See "Node Layout" in http://maxmind.github.io/MaxMind-DB/ for details.
 my $tree = MaxMind::DB::Writer::Tree->new(
     ip_version            => 4,
-    record_size           => 24,
+    record_size           => 28,
     database_type         => $db_name,
     languages             => ['en'],
     description           => { en => $db_description },
